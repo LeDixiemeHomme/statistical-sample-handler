@@ -4,6 +4,7 @@ import fr.esgi.fyc.statisticalsamplehandler.elastic.customException.MissingElast
 import fr.esgi.fyc.statisticalsamplehandler.elastic.domain.StatisticalSample;
 import fr.esgi.fyc.statisticalsamplehandler.elastic.service.ElasticService;
 import fr.esgi.fyc.statisticalsamplehandler.elastic.web.response.BulkStatisticalSampleResponse;
+import io.swagger.annotations.ApiOperation;
 import org.elasticsearch.common.compress.NotXContentException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +26,7 @@ public class ElasticController {
         this.elasticService = elasticService;
     }
 
+    @ApiOperation("Send a bulk of statistical sample to an elastic cluster.")
     @PostMapping(value = "/send/samples", produces = "application/json")
     public ResponseEntity<BulkStatisticalSampleResponse> postStatisticalSample(@RequestBody List<StatisticalSample> statisticalSampleBulk) {
         Optional<BulkStatisticalSampleResponse> optionalBulkStatisticalSampleResponse;
