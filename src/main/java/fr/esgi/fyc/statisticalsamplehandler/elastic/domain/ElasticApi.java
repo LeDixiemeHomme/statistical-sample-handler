@@ -20,7 +20,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Properties;
 
@@ -53,11 +53,10 @@ public class ElasticApi {
                                 httpClientBuilder.setDefaultCredentialsProvider(credentialsProvider)));
     }
 
-    public Optional<BulkStatisticalSampleResponse> sendBulk(List<String> data) throws IOException {
-        String elasticIndex = this.elasticProperties.getProperty("elastic.index");
+    public Optional<BulkStatisticalSampleResponse> sendBulk(Map<String, String> data) throws IOException {
         BulkRequest bulkRequest = new BulkRequest();
-        for(String entry: data) {
-            bulkRequest.add(new IndexRequest(elasticIndex,"mail").source(entry, XContentType.JSON));
+        for(Map.Entry<String, String> entry: data.entrySet()) {
+            bulkRequest.add(new IndexRequest(entry.getKey(),"statistical_sample").source(entry.getValue(), XContentType.JSON));
         }
 
         BulkResponse bulkResponse = this.restHighLevelClient.bulk(bulkRequest, RequestOptions.DEFAULT);

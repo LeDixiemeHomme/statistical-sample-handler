@@ -16,7 +16,7 @@
     <properties>
         <java.version>11</java.version>
         <org.projectlombok.version>1.18.20</org.projectlombok.version>
-        <com.fasterxml.jackson.version>2.12.5</com.fasterxml.jackson.version>
+        <com.fasterxml.jackson.version>2.13.1</com.fasterxml.jackson.version>
         <io.springfox.version>3.0.0</io.springfox.version>
         <org.elasticsearch.client.version>7.15.2</org.elasticsearch.client.version>
         <org.elasticsearch.version>7.15.2</org.elasticsearch.version>
@@ -68,6 +68,13 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
+            <version>${com.fasterxml.jackson.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-joda -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-joda</artifactId>
             <version>${com.fasterxml.jackson.version}</version>
         </dependency>
 
