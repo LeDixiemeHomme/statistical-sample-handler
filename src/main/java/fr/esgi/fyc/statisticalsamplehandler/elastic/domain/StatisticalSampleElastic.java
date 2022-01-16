@@ -20,6 +20,6 @@ public class StatisticalSampleElastic {
         this.nomMesure = statisticalSample.getMeasurementName();
         this.valeur = statisticalSample.getValue();
         this.unite = statisticalSample.getUnit();
-        this.dateFormatElastic = statisticalSample.getLocalDateTime().format(DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss"));
+        this.dateFormatElastic = statisticalSample.getLocalDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSS"));
     }
 }
